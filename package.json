@@ -4,6 +4,7 @@
   "description": "backend for knee rose",
   "main": "index.js",
   "scripts": {
+    "start": "netlify-lambda build src",
     "build": "netlify-lambda serve src"
   },
   "author": "Niroj Paudyal",
