@@ -20,16 +20,17 @@ function fixLength(len) {
   return len;
 }
 app.use(
-  cors(
-    {
-      origin: "http://localhost:3000",
-      methods: "GET,PUT,POST,DELETE,OPTIONS",
-    },
-    {
-      origin: "http://10.0.0.171:3000",
-      methods: "GET,PUT,POST,DELETE,OPTIONS",
-    }
-  )
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,PUT,POST,DELETE,OPTIONS",
+  })
+);
+
+app.use(
+  cors({
+    origin: "http://10.0.0.171:3000",
+    methods: "GET,PUT,POST,DELETE,OPTIONS",
+  })
 );
 
 router.get("/", (req, res) => {
@@ -146,7 +147,3 @@ router.get("/meme", async (req, res) => {
 
 app.use("/.netlify/functions/api", router);
 module.exports.handler = serverless(app);
-
-app.listen(() => {
-  console.log(`Server running!`);
-});
