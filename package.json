@@ -2,7 +2,7 @@
   "name": "kneerose",
   "version": "1.0.0",
   "description": "backend for knee rose",
-  "main": "index.js",
+  "main": "api.js",
   "scripts": {
     "build": "netlify deploy --prod"
   },
