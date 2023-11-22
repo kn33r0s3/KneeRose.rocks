@@ -4,6 +4,8 @@ const ytdl = require("ytdl-core");
 const ffmpeg = require("fluent-ffmpeg");
 const ffmpegPath = require("ffmpeg-static");
 const ffprobePath = require("ffprobe-static").path;
+const router = express.Router();
+const serverless = require("serverless-http");
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath);
@@ -11,7 +13,6 @@ ffmpeg.setFfprobePath(ffprobePath);
 const { YouTube } = require("popyt");
 
 const app = express();
-const PORT = 3001;
 
 function fixLength(len) {
   if (len === 0) return "";
@@ -19,23 +20,22 @@ function fixLength(len) {
   return len;
 }
 app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,PUT,POST,DELETE,OPTIONS",
-  })
+  cors(
+    {
+      origin: "http://localhost:3000",
+      methods: "GET,PUT,POST,DELETE,OPTIONS",
+    },
+    {
+      origin: "http://10.0.0.171:3000",
+      methods: "GET,PUT,POST,DELETE,OPTIONS",
+    }
+  )
 );
 
-app.use(
-  cors({
-    origin: "http://10.0.0.171:3000",
-    methods: "GET,PUT,POST,DELETE,OPTIONS",
-  })
-);
-
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.send("THIS IS THE BACKEND TO KNEE ROSE");
 });
-app.get("/getsong", async (req, res) => {
+router.get("/getsong", async (req, res) => {
   try {
     const youTube = new YouTube("AIzaSyAStVZQT5LnJOl5V1wapnQzVAXbca56ILs");
     const video = await youTube.getVideo(req.query.title);
@@ -58,7 +58,7 @@ app.get("/getsong", async (req, res) => {
   }
 });
 
-app.get("/play", async (req, res) => {
+router.get("/play", async (req, res) => {
   const videoUrl = req.query.url;
 
   try {
@@ -81,7 +81,7 @@ app.get("/play", async (req, res) => {
   }
 });
 
-app.get("/meme", async (req, res) => {
+router.get("/meme", async (req, res) => {
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
   var subreddits = [
@@ -144,6 +144,9 @@ app.get("/meme", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+app.use("/.netlify/functions/index", router);
+module.exports.handler = serverless(app);
+
+app.listen(() => {
+  console.log(`Server running!`);
 });
