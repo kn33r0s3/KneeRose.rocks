@@ -144,7 +144,7 @@ router.get("/meme", async (req, res) => {
   }
 });
 
-app.use("/.netlify/functions/index", router);
+app.use("/.netlify/functions/api", router);
 module.exports.handler = serverless(app);
 
 app.listen(() => {
