@@ -26,10 +26,18 @@ app.use(cors(corsOptions));
 app.options("*", cors());
 
 app.get("/", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
   res.send("THIS IS THE BACKEND TO KNEE ROSE");
 });
 
 app.get("/getsong", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
   try {
     const youTube = new YouTube("AIzaSyAStVZQT5LnJOl5V1wapnQzVAXbca56ILs");
     const video = await youTube.getVideo(req.query.title);
@@ -65,7 +73,13 @@ app.get("/play", async (req, res) => {
       "Cache-Control": "no-cache",
       "X-Audio-Duration": audioDuration,
     });
-
+    res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+    res.header(
+      "Access-Control-Allow-Methods",
+      "GET,HEAD,PUT,PATCH,POST,DELETE"
+    );
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
     const proc = ffmpeg(ytdl(videoUrl, { format: format })).format("mp3");
 
     proc.pipe(res);
@@ -76,6 +90,10 @@ app.get("/play", async (req, res) => {
 });
 
 app.get("/meme", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
   var subreddits = [
