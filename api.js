@@ -11,32 +11,18 @@ ffmpeg.setFfprobePath(ffprobePath);
 const { YouTube } = require("popyt");
 
 const app = express();
-
+const corsOptions = {
+  origin: "https://www.kneerose.rocks",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 function fixLength(len) {
   if (len === 0) return "";
   if (len < 10) return `0${len}:`;
   return len;
 }
-app.use(
-  cors({
-    origin: "https://kneerose.rocks",
-    methods: "GET,PUT,POST,DELETE,OPTIONS",
-  })
-);
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
-
-// app.use(
-//   cors({
-//     origin: "http://10.0.0.171:3000",
-//     methods: "GET,PUT,POST,DELETE,OPTIONS",
-//   })
-// );
 
 app.get("/", (req, res) => {
   res.send("THIS IS THE BACKEND TO KNEE ROSE");
