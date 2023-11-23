@@ -24,6 +24,13 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 // app.use(
 //   cors({
 //     origin: "http://10.0.0.171:3000",
