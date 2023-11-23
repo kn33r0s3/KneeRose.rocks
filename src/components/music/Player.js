@@ -38,7 +38,11 @@ export default function Player(props) {
   }
 
   const onLoadedMetadata = () => {
-    fetch(audioUrl).then((response) => {
+    fetch("https://api.kneerose.rocks/meme" + audioUrl, {
+      mode: "cors",
+      credentials: "include",
+      method: "GET",
+    }).then((response) => {
       const audioDuration = parseFloat(
         response.headers.get("X-Audio-Duration")
       );
