@@ -77,7 +77,7 @@ export default function Player(props) {
         ref={audioRef}
         onLoadedMetadata={onLoadedMetadata}
         onTimeUpdate={onTimeUpdate}
-        src={`https://api.kneerose.rocks/${audioUrl}`}
+        src={`https://api.kneerose.rocks${audioUrl}`}
         autoPlay="autoplay"
       />
       <NowPlaying
