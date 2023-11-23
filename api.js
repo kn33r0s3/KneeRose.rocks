@@ -11,19 +11,19 @@ ffmpeg.setFfprobePath(ffprobePath);
 const { YouTube } = require("popyt");
 
 const app = express();
-const corsOptions = {
-  origin: "https://kneerose.rocks",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-};
-
-app.options("*", cors());
-
-app.use(cors(corsOptions));
 function fixLength(len) {
   if (len === 0) return "";
   if (len < 10) return `0${len}:`;
   return len;
 }
+
+const corsOptions = {
+  origin: "https://kneerose.rocks",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors());
 
 app.get("/", (req, res) => {
   res.send("THIS IS THE BACKEND TO KNEE ROSE");
