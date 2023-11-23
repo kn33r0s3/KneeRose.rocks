@@ -73,6 +73,7 @@ export default function Player(props) {
   return (
     <div className="player">
       <audio
+        crossorigin="use-credentials"
         ref={audioRef}
         onLoadedMetadata={onLoadedMetadata}
         onTimeUpdate={onTimeUpdate}
