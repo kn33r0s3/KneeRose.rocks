@@ -25,11 +25,12 @@ export default function MemeGen() {
   }
   useEffect(() => {}, [memes]);
   function getMeme() {
-    fetch("/meme", {
+    fetch("https://api.kneerose.rocks/meme", {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setMeme({
           id: `${Date.now()}`,
           image: data.image,
