@@ -38,7 +38,9 @@ export default function Player(props) {
   }
 
   const onLoadedMetadata = () => {
-    fetch(`https://api.kneerose.rocks${audioUrl}`, {
+    var url = `https://api.kneerose.rocks${audioUrl}`;
+    console.log(url);
+    fetch(url, {
       mode: "cors",
       credentials: "include",
       method: "GET",
