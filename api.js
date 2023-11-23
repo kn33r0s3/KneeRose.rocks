@@ -15,6 +15,9 @@ const corsOptions = {
   origin: "https://kneerose.rocks",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 };
+
+app.options("*", cors());
+
 app.use(cors(corsOptions));
 function fixLength(len) {
   if (len === 0) return "";
