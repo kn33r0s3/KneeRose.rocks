@@ -52,12 +52,33 @@ app.get("/getsong", async (req, res) => {
   }
 });
 
+// app.get("/play", async (req, res) => {
+//   const videoUrl = req.query.url;
+
+//   try {
+//     const info = await ytdl.getInfo(videoUrl);
+//     const format = ytdl.chooseFormat(info.formats, { filter: "audioonly" });
+//     const audioDuration = info.videoDetails.lengthSeconds;
+
+//     res.header({
+//       "Content-Type": "audio/mpeg",
+//       "Cache-Control": "no-cache",
+//       "X-Audio-Duration": audioDuration,
+//     });
+
+//     const proc = ffmpeg(ytdl(videoUrl, { format: format })).format("mp3");
+
+//     proc.pipe(res);
+//   } catch (err) {
+//     console.error("Error:", err.message);
+//     res.status(500).send("An error occurred");
+//   }
+// });
 app.get("/play", async (req, res) => {
   const videoUrl = req.query.url;
 
   try {
     const info = await ytdl.getInfo(videoUrl);
-    const format = ytdl.chooseFormat(info.formats, { filter: "audioonly" });
     const audioDuration = info.videoDetails.lengthSeconds;
 
     res.header({
@@ -66,15 +87,27 @@ app.get("/play", async (req, res) => {
       "X-Audio-Duration": audioDuration,
     });
 
-    const proc = ffmpeg(ytdl(videoUrl, { format: format })).format("mp3");
+    const stream = ytdl(videoUrl, {
+      filter: "audioonly",
+      quality: "highestaudio",
+    });
 
-    proc.pipe(res);
+    const ffmpegProcess = ffmpeg(stream)
+      .audioCodec("libmp3lame")
+      .format("mp3")
+      .on("end", () => console.log("Finished processing"))
+      .on("error", (err) => console.error("Error:", err))
+      .pipe(res, { end: true });
+
+    req.on("close", () => {
+      console.log("Request closed. Terminating FFmpeg process.");
+      ffmpegProcess.kill();
+    });
   } catch (err) {
     console.error("Error:", err.message);
     res.status(500).send("An error occurred");
   }
 });
-
 app.get("/meme", async (req, res) => {
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
