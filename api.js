@@ -19,17 +19,17 @@ function fixLength(len) {
 }
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://kneerose.rocks",
     methods: "GET,PUT,POST,DELETE,OPTIONS",
   })
 );
 
-app.use(
-  cors({
-    origin: "http://10.0.0.171:3000",
-    methods: "GET,PUT,POST,DELETE,OPTIONS",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://10.0.0.171:3000",
+//     methods: "GET,PUT,POST,DELETE,OPTIONS",
+//   })
+// );
 
 app.get("/", (req, res) => {
   res.send("THIS IS THE BACKEND TO KNEE ROSE");
