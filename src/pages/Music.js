@@ -12,7 +12,7 @@ export default function Music() {
   const [err, setErr] = useState("");
 
   async function addToQueue() {
-    await fetch("https://api.kneerose.rocks/meme" + `/getsong?title=${title}`, {
+    await fetch("https://api.kneerose.rocks" + `/getsong?title=${title}`, {
       mode: "cors",
       credentials: "include",
       method: "GET",
