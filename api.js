@@ -60,7 +60,7 @@ app.get("/play", async (req, res) => {
     const format = ytdl.chooseFormat(info.formats, { filter: "audioonly" });
     const audioDuration = info.videoDetails.lengthSeconds;
 
-    res.writeHead(200, {
+    res.header({
       "Content-Type": "audio/mpeg",
       "Cache-Control": "no-cache",
       "X-Audio-Duration": audioDuration,
