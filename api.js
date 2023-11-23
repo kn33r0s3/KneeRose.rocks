@@ -4,9 +4,7 @@ const ytdl = require("ytdl-core");
 const ffmpeg = require("fluent-ffmpeg");
 const ffmpegPath = require("ffmpeg-static");
 const ffprobePath = require("ffprobe-static").path;
-const router = express.Router();
-const serverless = require("serverless-http");
-
+const PORT = 8000;
 ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath);
 
@@ -33,10 +31,11 @@ app.use(
   })
 );
 
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("THIS IS THE BACKEND TO KNEE ROSE");
 });
-router.get("/getsong", async (req, res) => {
+
+app.get("/getsong", async (req, res) => {
   try {
     const youTube = new YouTube("AIzaSyAStVZQT5LnJOl5V1wapnQzVAXbca56ILs");
     const video = await youTube.getVideo(req.query.title);
@@ -59,7 +58,7 @@ router.get("/getsong", async (req, res) => {
   }
 });
 
-router.get("/play", async (req, res) => {
+app.get("/play", async (req, res) => {
   const videoUrl = req.query.url;
 
   try {
@@ -82,7 +81,7 @@ router.get("/play", async (req, res) => {
   }
 });
 
-router.get("/meme", async (req, res) => {
+app.get("/meme", async (req, res) => {
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
   var subreddits = [
@@ -145,6 +144,6 @@ router.get("/meme", async (req, res) => {
   }
 });
 
-app.use("/.netlify/functions/api", router);
-
-module.exports.handler = serverless(app);
+app.listen(PORT, () => {
+  console.log("Server is running at http://localhost:" + PORT);
+});

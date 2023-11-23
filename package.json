@@ -2,10 +2,10 @@
   "name": "kneerose",
   "version": "1.0.0",
   "description": "backend for knee rose",
-  "main": "index.js",
+  "main": "api.js",
   "scripts": {
-    "start": "netlify-lambda build src",
-    "build": "netlify-lambda serve src"
+    "start": "node api",
+    "build": "node api"
   },
   "author": "Niroj Paudyal",
   "license": "ISC",
@@ -17,10 +17,11 @@
     "ffmpeg-static": "^5.1.0",
     "ffprobe-static": "^3.1.0",
     "fluent-ffmpeg": "^2.1.2",
-    "netlify-lambda": "^2.0.16",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.0.1",
     "popyt": "^5.0.0",
-    "serverless-http": "^3.2.0",
     "ytdl-core": "^4.11.5"
+  },
+  "resolutions": {
+    "terser": "3.14.1"
   }
 }
