@@ -41,8 +41,8 @@ export default function Player(props) {
     var url = `https://api.kneerose.rocks${audioUrl}`;
     console.log(url);
     fetch(url, {
-      mode: "cors",
-      credentials: "include",
+      // mode: "cors",
+      // credentials: "include",
       method: "GET",
     }).then((response) => {
       const audioDuration = parseFloat(
@@ -73,11 +73,11 @@ export default function Player(props) {
   return (
     <div className="player">
       <audio
-        crossorigin="use-credentials"
         ref={audioRef}
         onLoadedMetadata={onLoadedMetadata}
         onTimeUpdate={onTimeUpdate}
         src={`https://api.kneerose.rocks${audioUrl}`}
+        type="audio/mp3"
         autoPlay="autoplay"
       />
       <NowPlaying

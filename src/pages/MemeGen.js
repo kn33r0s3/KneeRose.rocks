@@ -26,8 +26,8 @@ export default function MemeGen() {
   useEffect(() => {}, [memes]);
   function getMeme() {
     fetch("https://api.kneerose.rocks/meme", {
-      mode: "cors",
-      credentials: "include",
+      // mode: "cors",
+      // credentials: "include",
       method: "GET",
     })
       .then((res) => res.json())

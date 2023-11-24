@@ -13,8 +13,8 @@ export default function Music() {
 
   async function addToQueue() {
     await fetch(`https://api.kneerose.rocks/getsong?title=${title}`, {
-      mode: "cors",
-      credentials: "include",
+      // mode: "cors",
+      // credentials: "include",
       method: "GET",
     })
       .then((res) => res.json())
