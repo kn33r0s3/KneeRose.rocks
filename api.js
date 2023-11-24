@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors");
+// const cors = require("cors");
 const ytdl = require("ytdl-core");
 const ffmpeg = require("fluent-ffmpeg");
 const ffmpegPath = require("ffmpeg-static");
@@ -11,13 +11,13 @@ ffmpeg.setFfprobePath(ffprobePath);
 const { YouTube } = require("popyt");
 
 const app = express();
-const corsOptions = {
-  origin: "https://www.kneerose.rocks",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: "https://www.kneerose.rocks",
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+// };
+// app.use(cors(corsOptions));
 
 function fixLength(len) {
   if (len === 0) return "";
@@ -61,7 +61,7 @@ app.get("/play", async (req, res) => {
     const audioDuration = info.videoDetails.lengthSeconds;
 
     res.header({
-      "Content-Type": "audio/mpeg",
+      "Content-Type": "audio/mp3",
       "Cache-Control": "no-cache",
       "X-Audio-Duration": audioDuration,
     });
