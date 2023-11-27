@@ -44,7 +44,6 @@ export default function Player(props) {
       mode: "cors",
       method: "GET",
       headers: {
-        "Access-Control-Allow-Origin": "https://kneerose.rocks",
         "Content-Type": "application/json",
       },
     }).then((response) => {
