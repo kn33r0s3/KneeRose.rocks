@@ -38,14 +38,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/getsong", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
   try {
-    res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-
     const youTube = new YouTube("AIzaSyAStVZQT5LnJOl5V1wapnQzVAXbca56ILs");
     const video = await youTube.getVideo(req.query.title);
     console.log(video);
@@ -68,18 +64,15 @@ app.get("/getsong", async (req, res) => {
 });
 
 app.get("/play", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
   const videoUrl = req.query.url;
 
   try {
     const info = await ytdl.getInfo(videoUrl);
     const format = ytdl.chooseFormat(info.formats, { filter: "audioonly" });
     const audioDuration = info.videoDetails.lengthSeconds;
-    res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
 
     res.header({
       "Content-Type": "audio/mp3",
@@ -97,6 +90,9 @@ app.get("/play", async (req, res) => {
 });
 
 app.get("/meme", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
   var subreddits = [
@@ -153,12 +149,6 @@ app.get("/meme", async (req, res) => {
     memereddits[Math.floor(Math.random() * memereddits.length)];
   try {
     var data = await getRandomMeme(randomSubreddit);
-    res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
 
     res.send({ image: `${data.image}` });
   } catch (e) {
