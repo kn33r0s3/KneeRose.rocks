@@ -77,11 +77,11 @@ export default function Player(props) {
   return (
     <div className="player">
       <audio
-        crossOrigin="use-credentials"
         ref={audioRef}
         onLoadedMetadata={onLoadedMetadata}
         onTimeUpdate={onTimeUpdate}
         src={`https://api.kneerose.rocks${audioUrl}`}
+        crossOrigin="use-credentials"
         type="audio/mp3"
         autoPlay="autoplay"
       />
