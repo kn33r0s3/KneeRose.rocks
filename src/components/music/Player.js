@@ -191,6 +191,7 @@ export default function Player(props) {
       <audio
         crossOrigin="use-credentials"
         autoPlay="autoplay"
+        type="audio/mp3"
         ref={audioRef}
         onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
         onLoadedMetadata={() => setDuration(audioRef.current.duration)}
