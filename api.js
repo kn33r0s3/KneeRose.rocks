@@ -20,7 +20,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  // Add other headers as needed
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -141,6 +140,11 @@ app.get("/meme", async (req, res) => {
     memereddits[Math.floor(Math.random() * memereddits.length)];
   try {
     var data = await getRandomMeme(randomSubreddit);
+    res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     res.send({ image: `${data.image}` });
   } catch (e) {
     console.log(e);
