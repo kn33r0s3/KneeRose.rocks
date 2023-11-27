@@ -13,7 +13,7 @@ const { YouTube } = require("popyt");
 const app = express();
 // CORS configuration
 const corsOptions = {
-  origin: "https://www.kneerose.rocks",
+  origin: "https://kneerose.rocks",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 
 app.get("/getsong", async (req, res) => {
   try {
-    res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
+    res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.header(
       "Access-Control-Allow-Headers",
@@ -67,7 +67,7 @@ app.get("/play", async (req, res) => {
     const info = await ytdl.getInfo(videoUrl);
     const format = ytdl.chooseFormat(info.formats, { filter: "audioonly" });
     const audioDuration = info.videoDetails.lengthSeconds;
-    res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
+    res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.header(
       "Access-Control-Allow-Headers",
@@ -146,7 +146,7 @@ app.get("/meme", async (req, res) => {
     memereddits[Math.floor(Math.random() * memereddits.length)];
   try {
     var data = await getRandomMeme(randomSubreddit);
-    res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
+    res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.header(
       "Access-Control-Allow-Headers",
