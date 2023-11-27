@@ -146,7 +146,7 @@ export default function Player(props) {
         credentials: "include",
         headers: {
           "Access-Control-Allow-Origin": "https://kneerose.rocks",
-          "Content-Type": "application/json",
+          "Content-Type": "audio/mp3",
         },
       });
       const blob = await response.blob();
