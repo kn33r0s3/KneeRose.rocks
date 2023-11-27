@@ -140,7 +140,15 @@ export default function Player(props) {
 
   const loadAndPlayAudio = async () => {
     try {
-      const response = await fetch(`https://api.kneerose.rocks${audioUrl}`);
+      const response = await fetch(`https://api.kneerose.rocks${audioUrl}`, {
+        mode: "cors",
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Access-Control-Allow-Origin": "https://kneerose.rocks",
+          "Content-Type": "application/json",
+        },
+      });
       const blob = await response.blob();
       const audio = new Audio(URL.createObjectURL(blob));
 
