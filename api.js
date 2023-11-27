@@ -12,7 +12,7 @@ const { YouTube } = require("popyt");
 
 const app = express();
 const corsOptions = {
-  origin: "https://kneerose.rocks",
+  origin: "https://www.kneerose.rocks",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
@@ -82,8 +82,6 @@ app.get("/play", async (req, res) => {
 });
 
 app.get("/meme", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
   var subreddits = [
