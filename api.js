@@ -12,14 +12,14 @@ const { YouTube } = require("popyt");
 
 const app = express();
 const corsOptions = {
-  origin: "https://kneerose.rocks",
+  origin: "https://www.kneerose.rocks",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   next();
 });
@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/getsong", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   try {
     const youTube = new YouTube("AIzaSyAStVZQT5LnJOl5V1wapnQzVAXbca56ILs");
@@ -60,7 +60,7 @@ app.get("/getsong", async (req, res) => {
 });
 
 app.get("/play", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   const videoUrl = req.query.url;
 
@@ -85,7 +85,7 @@ app.get("/play", async (req, res) => {
 });
 
 app.get("/meme", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
