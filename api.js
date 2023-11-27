@@ -11,13 +11,13 @@ ffmpeg.setFfprobePath(ffprobePath);
 const { YouTube } = require("popyt");
 
 const app = express();
-// const corsOptions = {
-//   origin: "https://www.kneerose.rocks",
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   credentials: true,
-//   optionsSuccessStatus: 204,
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: "https://kneerose.rocks",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
