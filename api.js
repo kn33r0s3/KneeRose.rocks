@@ -11,13 +11,6 @@ ffmpeg.setFfprobePath(ffprobePath);
 const { YouTube } = require("popyt");
 
 const app = express();
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
 const corsOptions = {
   origin: "https://kneerose.rocks",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -25,8 +18,11 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
-
-app.options("*", cors(corsOptions));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  next();
+});
 
 function fixLength(len) {
   if (len === 0) return "";
@@ -35,14 +31,10 @@ function fixLength(len) {
 }
 
 app.get("/", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.send("THIS IS THE BACKEND TO KNEE ROSE");
 });
 
 app.get("/getsong", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   try {
     const youTube = new YouTube("AIzaSyAStVZQT5LnJOl5V1wapnQzVAXbca56ILs");
     const video = await youTube.getVideo(req.query.title);
@@ -66,8 +58,6 @@ app.get("/getsong", async (req, res) => {
 });
 
 app.get("/play", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   const videoUrl = req.query.url;
 
   try {
@@ -92,8 +82,7 @@ app.get("/play", async (req, res) => {
 
 app.get("/meme", async (req, res) => {
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
-  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+
   var subreddits = [
     "horny",
     "skinnytail",
