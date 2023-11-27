@@ -65,8 +65,7 @@ app.get("/getsong", async (req, res) => {
 
 app.get("/play", async (req, res) => {
   res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   const videoUrl = req.query.url;
 
   try {
