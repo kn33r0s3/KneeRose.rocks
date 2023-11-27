@@ -18,11 +18,8 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  next();
-});
+
+app.options("*", cors(corsOptions));
 
 function fixLength(len) {
   if (len === 0) return "";
