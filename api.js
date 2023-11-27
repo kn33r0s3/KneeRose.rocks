@@ -35,6 +35,8 @@ function fixLength(len) {
 }
 
 app.get("/", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.send("THIS IS THE BACKEND TO KNEE ROSE");
 });
 
@@ -90,7 +92,8 @@ app.get("/play", async (req, res) => {
 
 app.get("/meme", async (req, res) => {
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
-
+  res.header("Access-Control-Allow-Origin", "https://kneerose.rocks");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   var subreddits = [
     "horny",
     "skinnytail",
