@@ -189,6 +189,8 @@ export default function Player(props) {
   return (
     <div className="player">
       <audio
+        crossOrigin="use-credentials"
+        autoPlay="autoplay"
         ref={audioRef}
         onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
         onLoadedMetadata={() => setDuration(audioRef.current.duration)}
