@@ -29,7 +29,7 @@ export default function MemeGen() {
       mode: "cors",
       method: "GET",
       headers: {
-        "Access-Control-Allow-Origin": "https://www.kneerose.rocks",
+        "Access-Control-Allow-Origin": "https://kneerose.rocks",
         "Content-Type": "application/json",
       },
     })
