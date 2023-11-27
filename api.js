@@ -12,7 +12,7 @@ const { YouTube } = require("popyt");
 
 const app = express();
 const corsOptions = {
-  origin: "https://kneerose.rocks",
+  origin: "https://kneerose.rocks/",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
