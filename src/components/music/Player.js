@@ -44,9 +44,7 @@ export default function Player(props) {
       mode: "cors",
       method: "GET",
       headers: {
-        "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
     }).then((response) => {
       const audioDuration = parseFloat(
