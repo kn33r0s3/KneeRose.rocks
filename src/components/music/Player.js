@@ -41,7 +41,7 @@ export default function Player(props) {
     var url = `https://api.kneerose.rocks${audioUrl}`;
     console.log(url);
     fetch(url, {
-      mode: "CORS",
+      mode: "cors",
       method: "GET",
     }).then((response) => {
       const audioDuration = parseFloat(
