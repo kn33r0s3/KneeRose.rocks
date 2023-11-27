@@ -15,6 +15,11 @@ export default function Music() {
     await fetch(`https://api.kneerose.rocks/getsong?title=${title}`, {
       mode: "cors",
       method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
     })
       .then((res) => res.json())
       .then((data) => {
