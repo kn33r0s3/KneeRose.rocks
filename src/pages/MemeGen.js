@@ -28,6 +28,7 @@ export default function MemeGen() {
     fetch("https://api.kneerose.rocks/meme", {
       mode: "cors",
       method: "GET",
+      credentials: "include",
       headers: {
         "Access-Control-Allow-Origin": "https://kneerose.rocks",
         "Content-Type": "application/json",
