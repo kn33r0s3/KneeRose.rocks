@@ -8,7 +8,8 @@
   ],
   "routes": [
     {
-      "src": "api.js",
+      "src": "/*",
+      "dest": "api.js",
       "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Origin": "*",
