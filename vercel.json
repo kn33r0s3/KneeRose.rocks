@@ -9,13 +9,7 @@
   "routes": [
     {
       "src": "/*",
-      "dest": "api.js",
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "https://kneerose.rocks",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
-      }
+      "dest": "api.js"
     }
   ]
 }
