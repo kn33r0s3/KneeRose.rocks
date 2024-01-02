@@ -1,4 +1,8 @@
 {
+  "version": 2,
+  "builds": [{ "src": "*.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/.*", "dest": "/api.js" }],
+  "regions": ["sfo1"],
   "headers": [
     {
       "source": "/api.js",
