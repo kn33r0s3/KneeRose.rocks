@@ -23,12 +23,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 //
 //
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
 
 function fixLength(len) {
   if (len === 0) return "";
@@ -41,9 +35,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/getsong", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   try {
     const youTube = new YouTube("AIzaSyAStVZQT5LnJOl5V1wapnQzVAXbca56ILs");
     const video = await youTube.getVideo(req.query.title);
@@ -67,9 +58,6 @@ app.get("/getsong", async (req, res) => {
 });
 
 app.get("/play", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   const videoUrl = req.query.url;
 
   try {
@@ -93,9 +81,6 @@ app.get("/play", async (req, res) => {
 });
 
 app.get("/meme", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "https://kneerose.rocks");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
   var subreddits = [
