@@ -14,7 +14,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: "https://kneerose.rocks",
+  origin: "https://www.kneerose.rocks",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: "true",
   optionsSuccessStatus: 204,
