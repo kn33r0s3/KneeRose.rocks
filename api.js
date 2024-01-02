@@ -17,14 +17,14 @@ const app = express();
 const corsOptions = {
   origin: "https://kneerose.rocks",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
+  credentials: "true",
   optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
 //
 //
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "https://kneerose.rocks");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/getsong", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "https://kneerose.rocks");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   try {
@@ -67,7 +67,7 @@ app.get("/getsong", async (req, res) => {
 });
 
 app.get("/play", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "https://kneerose.rocks");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   const videoUrl = req.query.url;
@@ -93,7 +93,7 @@ app.get("/play", async (req, res) => {
 });
 
 app.get("/meme", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "https://kneerose.rocks");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
