@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vercel API Example</title>
+  </head>
+  <body>
+    <h1>Vercel API Example</h1>
+    <p>
+      Please make sure you have a server running on your local machine and have
+      a file named 'api.js' in the same directory.
+    </p>
+    <script>
+      fetch("/api")
+        .then((response) => response.json())
+        .then((data) => {
+          const pre = document.createElement("pre");
+          pre.textContent = JSON.stringify(data, null, 2);
+          document.body.appendChild(pre);
+        });
+    </script>
+  </body>
+</html>
