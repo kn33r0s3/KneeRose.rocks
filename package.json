@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "backend for knee rose",
   "main": "api.js",
-  "scripts": {
-    "start": "node api.js"
-  },
+  // "scripts": {
+  //   "start": "node api.js"
+  // },
   "author": "Niroj Paudyal",
   "license": "ISC",
   "dependencies": {
