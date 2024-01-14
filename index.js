@@ -80,7 +80,7 @@ app.get("/play", async (req, res) => {
 
 app.get("/meme", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "true");
+  res.setHeader("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
   var subreddits = [
