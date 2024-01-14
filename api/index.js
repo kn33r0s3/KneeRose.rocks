@@ -16,7 +16,7 @@ const app = express();
 const corsOptions = {
   origin: "https://www.kneerose.rocks",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: "true",
+  credentials: true,
   optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
@@ -79,6 +79,8 @@ app.get("/play", async (req, res) => {
 });
 
 app.get("/meme", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Origin", "https://www.kneerose.rocks");
   const { getRandomMeme } = require("@blad3mak3r/reddit-memes");
 
   var subreddits = [
