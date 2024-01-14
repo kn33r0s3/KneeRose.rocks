@@ -25,12 +25,12 @@ export default function MemeGen() {
   }
   useEffect(() => {}, [memes]);
   function getMeme() {
-    fetch("https://api.kneerose.rocks/meme", {
+    fetch("https://www.api.kneerose.rocks/meme", {
       mode: "cors",
       method: "GET",
       credentials: "include",
       headers: {
-        "Access-Control-Allow-Origin": "https://kneerose.rocks",
+        "Access-Control-Allow-Origin": "https://www.kneerose.rocks",
         "Content-Type": "application/json",
       },
     })
