@@ -30,7 +30,6 @@ export default function MemeGen() {
       method: "GET",
       credentials: "include",
       headers: {
-        "Access-Control-Allow-Origin": "https://www.kneerose.rocks",
         "Content-Type": "application/json",
       },
     })
