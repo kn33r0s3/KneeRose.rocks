@@ -38,14 +38,13 @@ export default function Player(props) {
   }
 
   const onLoadedMetadata = () => {
-    var url = `https://api.kneerose.rocks${audioUrl}`;
+    var url = `https://www.api.kneerose.rocks${audioUrl}`;
     console.log(url);
     fetch(url, {
       mode: "cors",
       method: "GET",
       credentials: "include",
       headers: {
-        "Access-Control-Allow-Origin": "https://kneerose.rocks",
         "Content-Type": "application/json",
       },
     }).then((response) => {
@@ -80,7 +79,7 @@ export default function Player(props) {
         ref={audioRef}
         onLoadedMetadata={onLoadedMetadata}
         onTimeUpdate={onTimeUpdate}
-        src={`https://api.kneerose.rocks${audioUrl}`}
+        src={`https://www.api.kneerose.rocks${audioUrl}`}
         crossOrigin="use-credentials"
         type="audio/mp3"
         autoPlay="autoplay"
