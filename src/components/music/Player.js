@@ -80,7 +80,7 @@ export default function Player(props) {
         onLoadedMetadata={onLoadedMetadata}
         onTimeUpdate={onTimeUpdate}
         src={`https://www.api.kneerose.rocks${audioUrl}`}
-        crossOrigin="use-credentials"
+        crossOrigin="anonymous"
         type="audio/mp3"
         autoPlay="autoplay"
       />
