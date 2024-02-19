@@ -13,6 +13,7 @@ export default function Player(props) {
     setLoop,
   } = props;
   const [currentTime, setCurrentTime] = useState(0);
+  const [playSong, setPlaySong] = useState("");
   const [duration, setDuration] = useState("...");
   const audioRef = useRef();
 
@@ -81,7 +82,7 @@ export default function Player(props) {
         .then((response) => response.blob())
         .then((blob) => {
           const audioSrc = URL.createObjectURL(blob);
-          setAudioUrl(() => audioSrc);
+          setPlaySong(() => audioSrc);
         })
         .catch((error) => console.error("Error fetching audio:", error));
     }
@@ -92,7 +93,7 @@ export default function Player(props) {
         onLoadedMetadata={onLoadedMetadata}
         ref={audioRef}
         onTimeUpdate={onTimeUpdate}
-        src={`${audioUrl}`}
+        src={`${playSong}`}
         crossOrigin="anonymous"
         type="audio/mp3"
         autoPlay="autoplay"
