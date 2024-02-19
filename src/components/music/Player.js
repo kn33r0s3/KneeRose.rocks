@@ -77,6 +77,7 @@ export default function Player(props) {
     fetch(`https://www.api.kneerose.rocks${audioUrl}`, {
       mode: "no-cors",
       method: "GET",
+      headers: { Range: "bytes=0-" },
     })
       .then((response) => response.blob())
       .then((blob) => {
