@@ -73,13 +73,26 @@ export default function Player(props) {
   };
 
   useEffect(() => {}, [isPlaying, currentSong]);
+  useEffect(() => {
+    if (currentSong && currentSong.audioUrl) {
+      fetch(`https://www.api.kneerose.rocks${currentSong.audioUrl}`, {
+        mode: "cors",
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const audioSrc = URL.createObjectURL(blob);
+          setAudioUrl(() => audioSrc);
+        })
+        .catch((error) => console.error("Error fetching audio:", error));
+    }
+  }, [currentSong]);
   return (
     <div className="player">
       <audio
-        ref={audioRef}
         onLoadedMetadata={onLoadedMetadata}
+        ref={audioRef}
         onTimeUpdate={onTimeUpdate}
-        src={`https://www.api.kneerose.rocks${audioUrl}`}
+        src={`${audioUrl}`}
         crossOrigin="anonymous"
         type="audio/mp3"
         autoPlay="autoplay"
