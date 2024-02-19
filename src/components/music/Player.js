@@ -72,7 +72,8 @@ export default function Player(props) {
     audioRef.current.currentTime = seekTime;
     setCurrentTime(seekTime);
   };
-  const trylol = async () => {
+
+  useEffect(() => {
     fetch(`https://www.api.kneerose.rocks${audioUrl}`, {
       mode: "cors",
       method: "GET",
@@ -87,12 +88,10 @@ export default function Player(props) {
         setPlaySong(() => audioSrc);
       })
       .catch((error) => console.error("Error fetching audio:", error));
-  };
-  useEffect(() => {}, [isPlaying, currentSong]);
+  }, [isPlaying, currentSong]);
 
   return (
     <div className="player">
-      {trylol()}
       <audio
         onLoadedMetadata={onLoadedMetadata}
         ref={audioRef}
