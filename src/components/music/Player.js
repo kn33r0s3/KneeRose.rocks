@@ -72,9 +72,11 @@ export default function Player(props) {
     audioRef.current.currentTime = seekTime;
     setCurrentTime(seekTime);
   };
-  const trylol = () => {
+  const trylol = async () => {
     fetch(`https://www.api.kneerose.rocks${audioUrl}`, {
       mode: "cors",
+      method: "GET",
+      credentials: "include",
     })
       .then((response) => response.blob())
       .then((blob) => {
