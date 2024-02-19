@@ -93,7 +93,7 @@ export default function Player(props) {
         onLoadedMetadata={onLoadedMetadata}
         ref={audioRef}
         onTimeUpdate={onTimeUpdate}
-        src={`${playSong}`}
+        src={playSong}
         crossOrigin="anonymous"
         type="audio/mp3"
         autoPlay="autoplay"
