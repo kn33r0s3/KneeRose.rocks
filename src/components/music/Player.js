@@ -88,7 +88,7 @@ export default function Player(props) {
         setPlaySong(() => audioSrc);
       })
       .catch((error) => console.error("Error fetching audio:", error));
-  }, [isPlaying, currentSong]);
+  }, [currentSong]);
 
   return (
     <div className="player">
