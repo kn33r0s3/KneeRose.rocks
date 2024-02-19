@@ -77,6 +77,9 @@ export default function Player(props) {
       mode: "cors",
       method: "GET",
       credentials: "include",
+      headers: {
+        "Content-Type": "audio/mp3",
+      },
     })
       .then((response) => response.blob())
       .then((blob) => {
