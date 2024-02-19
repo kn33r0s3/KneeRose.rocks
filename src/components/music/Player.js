@@ -72,23 +72,22 @@ export default function Player(props) {
     audioRef.current.currentTime = seekTime;
     setCurrentTime(seekTime);
   };
-
-  useEffect(() => {}, [isPlaying, currentSong]);
-  useEffect(() => {
-    if (currentSong && currentSong.audioUrl) {
-      fetch(`https://www.api.kneerose.rocks${currentSong.audioUrl}`, {
-        mode: "cors",
+  const trylol = () => {
+    fetch(`https://www.api.kneerose.rocks${audioUrl}`, {
+      mode: "cors",
+    })
+      .then((response) => response.blob())
+      .then((blob) => {
+        const audioSrc = URL.createObjectURL(blob);
+        setPlaySong(() => audioSrc);
       })
-        .then((response) => response.blob())
-        .then((blob) => {
-          const audioSrc = URL.createObjectURL(blob);
-          setPlaySong(() => audioSrc);
-        })
-        .catch((error) => console.error("Error fetching audio:", error));
-    }
-  }, [currentSong]);
+      .catch((error) => console.error("Error fetching audio:", error));
+  };
+  useEffect(() => {}, [isPlaying, currentSong]);
+
   return (
     <div className="player">
+      {trylol()}
       <audio
         onLoadedMetadata={onLoadedMetadata}
         ref={audioRef}
