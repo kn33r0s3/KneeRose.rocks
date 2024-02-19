@@ -79,7 +79,7 @@ export default function Player(props) {
       method: "GET",
       credentials: "include",
       headers: {
-        "Content-Type": "audio/mp3",
+        "Content-Type": "application/json",
       },
     })
       .then((response) => response.blob())
