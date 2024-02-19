@@ -75,12 +75,8 @@ export default function Player(props) {
 
   useEffect(() => {
     fetch(`https://www.api.kneerose.rocks${audioUrl}`, {
-      mode: "cors",
+      mode: "no-cors",
       method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
     })
       .then((response) => response.blob())
       .then((blob) => {
