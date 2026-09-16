@@ -1,0 +1,130 @@
+.global-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: rgb(22, 21, 21);
+  border-top: 2px solid rgba(255, 155, 4, 0.5);
+  color: white;
+}
+
+.global-player-bar {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 12px;
+}
+
+.global-player-art {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  border-radius: 4px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.global-player-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.global-player-title {
+  font-weight: bold;
+  font-size: 0.95em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.global-player-artist {
+  font-size: 0.8em;
+  color: wheat;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.global-player-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gp-btn {
+  cursor: pointer;
+  color: white;
+  font-size: 1.1em;
+}
+.gp-btn:hover {
+  color: rgb(255, 155, 4);
+}
+.gp-btn-main {
+  font-size: 1.5em;
+  color: rgb(255, 155, 4);
+}
+.gp-active {
+  color: rgb(255, 155, 4);
+}
+
+.gp-expand-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 4px 8px;
+}
+
+.global-player-expanded {
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gp-expanded-art {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 auto 12px;
+  display: block;
+}
+
+.gp-expanded-title {
+  margin: 4px 0;
+}
+
+.gp-expanded-artist {
+  color: wheat;
+  margin-bottom: 12px;
+}
+
+.gp-seek {
+  width: 90%;
+}
+
+.gp-expanded-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+@media (min-width: 600px) {
+  .global-player {
+    max-width: 420px;
+    right: 16px;
+    left: auto;
+    bottom: 16px;
+    width: calc(100% - 32px);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 155, 4, 0.5);
+  }
+}
